@@ -3,7 +3,10 @@ package com.dragongame.game.view;
 import java.io.FileInputStream;
 
 import com.dragongame.game.Main;
+import com.dragongame.game.model.Bank;
+import com.dragongame.game.model.Dragon;
 import com.dragongame.resources.images.*;
+import com.dragongame.game.view.MapEventScreenController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
@@ -52,7 +55,7 @@ public class TutorialMapController {
 	 */
 	@FXML
 	private void initialize() {
-
+		
 	}
 	
 	/**
@@ -61,7 +64,8 @@ public class TutorialMapController {
 	@FXML
 	public void defaultMap() {
 		Image mapBase = new Image("com/dragongame/resources/images/Map Base.jpg");
-		theMap.setImage(mapBase);
+		theMap.setImage(mapBase);		
+	
 	}
 	
 	@FXML
@@ -71,9 +75,20 @@ public class TutorialMapController {
 	}
 	
 	@FXML
+	public void clickSea() {
+		main.eventMenuVisibility(true);
+	}
+	
+	@FXML
 	public void mouseOverCity() {
 		Image cityHighlight = new Image("com/dragongame/resources/images/Big City Highlight.jpg");
 		theMap.setImage(cityHighlight);
+		
+	}
+	
+	@FXML
+	public void clickCity() {
+		main.eventMenuVisibility(true);
 		
 	}
 	
@@ -85,10 +100,20 @@ public class TutorialMapController {
 	}
 	
 	@FXML
+	public void clickPort() {
+		main.eventMenuVisibility(true);
+	}
+	
+	@FXML
 	public void mouseOverRural() {
 		Image ruralHighlight = new Image("com/dragongame/resources/images/Rural Area Highlight.jpg");
 		theMap.setImage(ruralHighlight);
 		
+	}
+	
+	@FXML
+	public void clickRural() {
+		main.eventMenuVisibility(true);
 	}
 	
 	@FXML
@@ -99,10 +124,20 @@ public class TutorialMapController {
 	}
 	
 	@FXML
+	public void clickForest() {
+		main.eventMenuVisibility(true);
+	}
+	
+	@FXML
 	public void mouseOverRoad() {
 		Image roadHighlight = new Image("com/dragongame/resources/images/Trade Route Highlight.jpg");
 		theMap.setImage(roadHighlight);
 		
+	}
+	
+	@FXML
+	public void clickRoad() {
+		main.eventMenuVisibility(true);
 	}
 	
 	@FXML
@@ -113,10 +148,20 @@ public class TutorialMapController {
 	}
 	
 	@FXML
+	public void clickMountain() {
+		main.eventMenuVisibility(true);
+	}
+	
+	@FXML
 	public void mouseOverSky() {
 		Image skyHighlight = new Image("com/dragongame/resources/images/Sky Highlight.jpg");
 		theMap.setImage(skyHighlight);
 		
+	}
+	
+	@FXML
+	public void clickSky() {
+		main.eventMenuVisibility(true);
 	}
 	
 	@FXML
@@ -125,6 +170,8 @@ public class TutorialMapController {
 		theMap.setImage(badlandHighlight);
 		
 	}
+	
+	
 	
 	
 	

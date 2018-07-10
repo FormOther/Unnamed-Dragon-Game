@@ -14,7 +14,7 @@ public class ValueConversion {
 		{"Placid", "Calm", "Tense", "Annoyed", "Angry", "Raging",};
 		
 	public String[] dragonHealthWords = 
-		{"Half-Dead", "Wounded", "Healthy",};
+		{"Slain", "Half-Dead", "Wounded", "Healthy",};
 	
 	
 	

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="650.0" prefWidth="170.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dragongame.game.view.DebugMenuController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <VBox layoutX="43.0" layoutY="24.0" prefHeight="650.0" prefWidth="170.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="170.0" text="Debug Menu">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Pane prefHeight="60.0" prefWidth="170.0">
+               <children>
+                  <VBox prefHeight="59.0" prefWidth="170.0">
+                     <children>
+                        <Separator prefWidth="200.0" />
+                        <Label text="Dragon Hunger" />
+                        <GridPane hgap="5.0" vgap="5.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Button fx:id="dragonHungerButton1" mnemonicParsing="false" onAction="#minusDragonHunger" prefHeight="30.0" prefWidth="100.0" text="&lt;" />
+                              <Button fx:id="dragonHungerButton2" mnemonicParsing="false" onAction="#addDragonHunger" prefHeight="30.0" prefWidth="100.0" text="&gt;" GridPane.columnIndex="1" />
+                           </children>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                        </GridPane>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+            <Pane prefHeight="60.0" prefWidth="170.0">
+               <children>
+                  <VBox prefHeight="70.0" prefWidth="170.0">
+                     <children>
+                        <Separator prefWidth="200.0" />
+                        <Label text="Dragon Horniness" />
+                        <GridPane hgap="5.0" vgap="5.0">
+                           <children>
+                              <Button fx:id="dragonHorninessButton1" mnemonicParsing="false" onAction="#minusDragonHorniness" prefHeight="30.0" prefWidth="100.0" text="&lt;" />
+                              <Button fx:id="dragonHorninessButton2" mnemonicParsing="false" onAction="#addDragonHorniness" prefHeight="30.0" prefWidth="100.0" text="&gt;" GridPane.columnIndex="1" />
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+            <Pane prefHeight="60.0" prefWidth="170.0">
+               <children>
+                  <VBox prefHeight="70.0" prefWidth="170.0">
+                     <children>
+                        <Separator prefWidth="200.0" />
+                        <Label text="Dragon Mood" />
+                        <GridPane hgap="5.0" vgap="5.0">
+                           <children>
+                              <Button fx:id="dragonMoodButton1" mnemonicParsing="false" onAction="#minusDragonMood" prefHeight="30.0" prefWidth="100.0" text="&lt;" />
+                              <Button fx:id="dragonMoodButton2" mnemonicParsing="false" onAction="#addDragonMood" prefHeight="30.0" prefWidth="100.0" text="&gt;" GridPane.columnIndex="1" />
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+            <Pane prefHeight="60.0" prefWidth="170.0">
+               <children>
+                  <VBox prefHeight="70.0" prefWidth="170.0">
+                     <children>
+                        <Separator prefWidth="200.0" />
+                        <Label text="Dragon Health" />
+                        <GridPane hgap="5.0" vgap="5.0">
+                           <children>
+                              <Button fx:id="dragonHealthButton1" mnemonicParsing="false" onAction="#minusDragonHealth" prefHeight="30.0" prefWidth="100.0" text="&lt;" />
+                              <Button fx:id="dragonHealthButton2" mnemonicParsing="false" onAction="#addDragonHealth" prefHeight="30.0" prefWidth="100.0" text="&gt;" GridPane.columnIndex="1" />
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+            <Pane prefHeight="60.0" prefWidth="170.0">
+               <children>
+                  <VBox prefHeight="70.0" prefWidth="170.0">
+                     <children>
+                        <Separator prefWidth="200.0" />
+                        <Label text="Dragon Might" />
+                        <GridPane hgap="5.0" vgap="5.0">
+                           <children>
+                              <Button fx:id="dragonMightButton1" mnemonicParsing="false" onAction="#minusDragonMight" prefHeight="30.0" prefWidth="100.0" text="-1" />
+                              <Button fx:id="dragonMightButton2" mnemonicParsing="false" onAction="#addDragonMight" prefHeight="30.0" prefWidth="100.0" text="+1" GridPane.columnIndex="1" />
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+            <Pane prefHeight="60.0" prefWidth="170.0">
+               <children>
+                  <VBox prefHeight="70.0" prefWidth="170.0">
+                     <children>
+                        <Separator prefWidth="200.0" />
+                        <Label text="Dragon Intellect" />
+                        <GridPane hgap="5.0" vgap="5.0">
+                           <children>
+                              <Button fx:id="dragonIntellectButton1" mnemonicParsing="false" onAction="#minusDragonIntellect" prefHeight="30.0" prefWidth="100.0" text="-1" />
+                              <Button fx:id="dragonIntellectButton2" mnemonicParsing="false" onAction="#addDragonIntellect" prefHeight="30.0" prefWidth="100.0" text="+1" GridPane.columnIndex="1" />
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+            <Pane prefHeight="60.0" prefWidth="170.0">
+               <children>
+                  <VBox prefHeight="70.0" prefWidth="170.0">
+                     <children>
+                        <Separator prefWidth="200.0" />
+                        <Label text="Dragon Infamy" />
+                        <GridPane hgap="5.0" vgap="5.0">
+                           <children>
+                              <Button fx:id="dragonInfamyButton1" mnemonicParsing="false" onAction="#minusDragonInfamy" prefHeight="30.0" prefWidth="100.0" text="-1" />
+                              <Button fx:id="dragonInfamyButton2" mnemonicParsing="false" onAction="#addDragonInfamy" prefHeight="30.0" prefWidth="100.0" text="+1" GridPane.columnIndex="1" />
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+            <Pane prefHeight="60.0" prefWidth="170.0">
+               <children>
+                  <VBox prefHeight="70.0" prefWidth="170.0">
+                     <children>
+                        <Separator prefWidth="200.0" />
+                        <Label text="Dragon Gold" />
+                        <GridPane hgap="5.0" vgap="5.0">
+                           <children>
+                              <Button fx:id="dragonGoldButton1" mnemonicParsing="false" onAction="#minusDragonGold" prefHeight="30.0" prefWidth="100.0" text="-1000" />
+                              <Button fx:id="dragonGoldButton2" mnemonicParsing="false" onAction="#addDragonGold" prefHeight="30.0" prefWidth="100.0" text="+1000" GridPane.columnIndex="1" />
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
