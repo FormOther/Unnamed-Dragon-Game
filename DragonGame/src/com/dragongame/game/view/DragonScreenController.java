@@ -1,6 +1,8 @@
 package com.dragongame.game.view;
 
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import com.dragongame.game.Main;
@@ -25,21 +27,20 @@ public class DragonScreenController {
 	private Label dragonHealthLabel;
 	
 	@FXML
-	private Label dragonStaminaCounter;
+	private Label dragonMightCounter;
 	
 	@FXML 
 	private Label dragonInfamyCounter;
 	
 	@FXML
-	private Label dragonMagicCounter;
+	private Label dragonIntellectCounter;
 	
 	@FXML
 	private Label dragonGoldCounter;
 	
 	ValueConversion value = new ValueConversion();
-	private Dragon dragon;
-	private Bank bank;
-	
+	private static Bank bank;
+	private static Dragon dragon;
 	
 	// Reference to the main application.
 	private Main main;
@@ -52,6 +53,15 @@ public class DragonScreenController {
 	 * The constructor is called before the initialize() method.
 	 */
 	public DragonScreenController() {
+		
+	}
+	
+	public static Dragon getDragon() {
+		return dragon;
+	}
+	
+	public static Bank getBank() {
+		return bank;
 	}
 	
 	/**
@@ -60,17 +70,16 @@ public class DragonScreenController {
 	 */
 	@FXML
 	private void initialize() {
-		dragon = new Dragon();
 		bank = new Bank();
-	
+		dragon = new Dragon();
 		dragonHungerLabel.setText(value.dragonHungerWords[dragon.getDragonHunger()]);
 		dragonHorninessLabel.setText(value.dragonHorninessWords[dragon.getDragonHorniness()]);
 		dragonMoodLabel.setText(value.dragonMoodWords[dragon.getDragonMood()]);
 		dragonHealthLabel.setText(value.dragonHealthWords[dragon.getDragonHealth()]);
 		
-		dragonStaminaCounter.setText("" + dragon.getDragonStamina());
+		dragonMightCounter.setText("" + dragon.getDragonMight());
 		dragonInfamyCounter.setText("" + dragon.getDragonInfamy());
-		dragonMagicCounter.setText("" + dragon.getDragonMagic());
+		dragonIntellectCounter.setText("" + dragon.getDragonIntellect());
 		
 		dragonGoldCounter.setText(bank.getDragonGold() + " gold");
 		
@@ -83,15 +92,27 @@ public class DragonScreenController {
 	 * @return dragonMod
 	 * @return dragonHealth
 	 */
-	private void dragonGUIRefresh() {
+	public void dragonGUIRefresh() {
+		/*
+		dragonHungerLabel.textProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
+				dragonHungerLabel.setText(value.dragonHungerWords[dragon.getDragonHunger()]);
+				}
+			});
+				*/
+		
 		dragonHungerLabel.setText(value.dragonHungerWords[dragon.getDragonHunger()]);
 		dragonHorninessLabel.setText(value.dragonHorninessWords[dragon.getDragonHorniness()]);
 		dragonMoodLabel.setText(value.dragonMoodWords[dragon.getDragonMood()]);
 		dragonHealthLabel.setText(value.dragonHealthWords[dragon.getDragonHealth()]);
-		dragonStaminaCounter.setText("" + dragon.getDragonStamina());
+		
+		dragonMightCounter.setText("" + dragon.getDragonMight());
 		dragonInfamyCounter.setText("" + dragon.getDragonInfamy());
-		dragonMagicCounter.setText("" + dragon.getDragonMagic());
+		dragonIntellectCounter.setText("" + dragon.getDragonIntellect());
+		
 		dragonGoldCounter.setText(bank.getDragonGold() + " gold");
+		
 	}
 	
 
@@ -104,9 +125,6 @@ public class DragonScreenController {
 	public void setMain(Main main) {
 		this.main = main;
 	}
-	
-	
-	
 	
 	
 }

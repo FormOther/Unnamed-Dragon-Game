@@ -1,17 +1,15 @@
 package com.dragongame.game.model;
 
+import com.dragongame.game.Main;
+
 public class Bank {
 
 	private int dragonGold;
-	private int dragonGoldMax;
-	private int dragonGoldMin;
+	private static final int DRAGON_GOLD_MIN = 0;
+	private static final int DRAGON_GOLD_MAX = 1000000;
 	
 	public Bank() {
-		this.dragonGold = dragonGold;
-		
-		this.dragonGoldMax = 5000;
-		this.dragonGoldMin = 0;
-
+		this.dragonGold = 0;
 	}
 
 //------------------------------------------------------------
@@ -21,42 +19,14 @@ public class Bank {
 	}
 		
 	public void setDragonGold(int dragonGold) {
-		dragonGold = this.dragonGold;
+		this.dragonGold = Math.min(Math.max(dragonGold, DRAGON_GOLD_MIN), DRAGON_GOLD_MAX);
+		Main.getDragonScreenController().dragonGUIRefresh();
 	}
 		
-	public void addDragonGold(int amount) {
-		dragonGold += amount;
-		dragonGoldMaxCap();
-		
-	}
-		
-	public void minusDragonGold(int amount) {
-		dragonGold -= amount;
-		dragonGoldMinCap();
-		
-	}
-
-	public void dragonGoldMaxCap() {
-		if (dragonGold > dragonGoldMax) {
-			dragonGold = dragonGoldMax;
-		}
-	}
-	
-	public void dragonGoldMinCap () {
-		if (dragonGold <= dragonGoldMin) {
-			dragonGold = dragonGoldMin;
-		} 
+	public void incrementDragonGold(int increment) {
+		setDragonGold(getDragonGold()+ increment);
 	}
 	
 //------------------------------------------------------------
-		
-	public int getDragonGoldMax() {
-		return this.dragonGoldMax;
-	}
-	
-	public void setDragonGoldMax(int goldMax) {
-		goldMax = this.dragonGoldMax;
-	}
-	
 	
 }

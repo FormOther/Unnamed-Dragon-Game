@@ -1,6 +1,8 @@
 package com.dragongame.game.model;
 
 import com.dragongame.game.util.ValueConversion;
+import com.dragongame.game.view.DragonScreenController;
+import com.dragongame.game.Main;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
@@ -18,14 +20,35 @@ public class Dragon {
 
 	
 	private String dragonName;
-	private int dragonHunger;
-	private int dragonHorniness;
-	private int dragonMood;
-	private int dragonHealth;
 	
-	private int dragonStamina;
+	private int dragonHunger;
+	private static final int DRAGON_HUNGER_MIN = 0;
+	private static final int DRAGON_HUNGER_MAX = 3;
+	
+	private int dragonHorniness;
+	private static final int DRAGON_HORNINESS_MIN = 0;
+	private static final int DRAGON_HORNINESS_MAX = 3;
+	
+	private int dragonMood;
+	private static final int DRAGON_MOOD_MIN = 0;
+	private static final int DRAGON_MOOD_MAX = 5;
+	
+	private int dragonHealth;
+	private static final int DRAGON_HEALTH_MIN = 0;
+	private static final int DRAGON_HEALTH_MAX = 3;
+	
+	private int dragonMight;
+	private static final int DRAGON_MIGHT_MIN = 0;
+	private static final int DRAGON_MIGHT_MAX = 20;
+	
+	private int dragonIntellect;
+	private static final int DRAGON_INTELLECT_MIN = 0;
+	private static final int DRAGON_INTELLECT_MAX = 20;
+	
 	private int dragonInfamy;
-	private int dragonMagic;
+	private static final int DRAGON_INFAMY_MIN = 0;
+	private static final int DRAGON_INFAMY_MAX = 20;
+
 	
 	
 	/**
@@ -46,11 +69,12 @@ public class Dragon {
 		this.dragonHunger = 0;
 		this.dragonHorniness = 3;
 		this.dragonMood = 0;
-		this.dragonHealth = 2;
+		this.dragonHealth = 3;
 		
-		this.dragonStamina = 0;
+		this.dragonMight = 0;
+		this.dragonIntellect = 0;
 		this.dragonInfamy = 0;
-		this.dragonMagic = 0;
+		
 		
 	}
 	
@@ -61,7 +85,7 @@ public class Dragon {
 	}
 	
 	public void setDragonName(String dragonName) {
-		dragonName = this.dragonName;
+		this.dragonName = dragonName;
 	}
 	
 //------------------------------------------------------------
@@ -71,29 +95,12 @@ public class Dragon {
 	}
 		
 	public void setDragonHunger(int dragonHunger) {
-		dragonHunger = this.dragonHunger;
+		this.dragonHunger = Math.min(Math.max(dragonHunger, DRAGON_HUNGER_MIN), DRAGON_HUNGER_MAX);
+		Main.getDragonScreenController().dragonGUIRefresh();
 	}
 	
-	public void addDragonHunger() {
-		dragonHunger ++;
-		dragonHungerMaxCap(3);
-	}
-	
-	public void minusDragonHunger() {
-		dragonHunger --;
-		dragonHungerMinCap(0);
-	}
-	
-	public void dragonHungerMaxCap(int highCap) {
-		if (dragonHunger >= highCap) {
-			dragonHunger = highCap;
-		}
-	}
-	
-	public void dragonHungerMinCap (int minCap) {
-		if (dragonHunger <= minCap) {
-			dragonHunger = minCap;
-		} 
+	public void incrementDragonHunger(int increment) {
+		setDragonHunger(getDragonHunger()+ increment);
 	}
 	
 //------------------------------------------------------------
@@ -103,29 +110,12 @@ public class Dragon {
 	}
 	
 	public void setDragonHorniness(int dragonHorniness) {
-		dragonHorniness = this.dragonHorniness;
+		this.dragonHorniness = Math.min(Math.max(dragonHorniness, DRAGON_HORNINESS_MIN), DRAGON_HORNINESS_MAX);
+		Main.getDragonScreenController().dragonGUIRefresh();
 	}
-
-	public void addDragonHorniness() {
-		dragonHorniness ++;
-		dragonHorninessMaxCap(3);
-	}
-	
-	public void minusDragonHorniness() {
-		dragonHorniness --;
-		dragonHorninessMinCap(0);
-	}
-	
-	public void dragonHorninessMaxCap(int highCap) {
-		if (dragonHorniness >= highCap) {
-			dragonHorniness = highCap;
-		}
-	}
-	
-	public void dragonHorninessMinCap (int minCap) {
-		if (dragonHorniness <= minCap) {
-			dragonHorniness = minCap;
-		} 
+		
+	public void incrementDragonHorniness(int increment) {
+		setDragonHorniness(getDragonHorniness()+ increment);
 	}
 	
 //------------------------------------------------------------
@@ -135,29 +125,12 @@ public class Dragon {
 	}
 	
 	public void setDragonMood(int dragonMood) {
-		dragonMood = this.dragonMood;
+		this.dragonMood = Math.min(Math.max(dragonMood, DRAGON_MOOD_MIN), DRAGON_MOOD_MAX);
+		Main.getDragonScreenController().dragonGUIRefresh();
 	}
 
-	public void addDragonMood() {
-		dragonMood ++;
-		dragonMoodMaxCap(5);
-	}
-	
-	public void minusDragonMood() {
-		dragonMood --;
-		dragonMoodMinCap(0);
-	}
-	
-	public void dragonMoodMaxCap(int highCap) {
-		if (dragonMood >= highCap) {
-			dragonMood = highCap;
-		}
-	}
-	
-	public void dragonMoodMinCap (int minCap) {
-		if (dragonMood <= minCap) {
-			dragonMood = minCap;
-		} 
+	public void incrementDragonMood(int increment) {
+		setDragonMood(getDragonMood() + increment);
 	}
 	
 //------------------------------------------------------------
@@ -167,60 +140,42 @@ public class Dragon {
 	}
 	
 	public void setDragonHealth(int dragonHealth) {
-		dragonHealth = this.dragonHealth;
+		this.dragonHealth = Math.min(Math.max(dragonHealth, DRAGON_HEALTH_MIN), DRAGON_HEALTH_MAX);
+		Main.getDragonScreenController().dragonGUIRefresh();
 	}
 
-	public void addDragonHealth() {
-		dragonHealth ++;
-		dragonHealthMaxCap(2);
-	}
-	
-	public void minusDragonHealth() {
-		dragonHealth --;
-		dragonHealthMinCap(0);
-	}
-	
-	public void dragonHealthMaxCap(int highCap) {
-		if (dragonHealth >= highCap) {
-			dragonHealth = highCap;
-		}
-	}
-	
-	public void dragonHealthMinCap (int minCap) {
-		if (dragonHealth <= minCap) {
-			dragonHealth = minCap;
-		} 
+	public void incrementDragonHealth(int increment) {
+		setDragonHealth(getDragonHealth() + increment);
 	}
 	
 //------------------------------------------------------------
 	
-	public int getDragonStamina() {
-		return this.dragonStamina;
+	public int getDragonMight() {
+		return this.dragonMight;
 	}
 	
-	public void setDragonStamina(int dragonStamina) {
-		dragonStamina = this.dragonStamina;
+	public void setDragonMight(int dragonMight) {
+		 this.dragonMight =  Math.min(Math.max(dragonMight, DRAGON_MIGHT_MIN), DRAGON_MIGHT_MAX);
+			Main.getDragonScreenController().dragonGUIRefresh();
 	}
 	
-	public void addDragonStamina() {
-		dragonStamina += 1;
+	public void incrementDragonMight(int increment) {
+		setDragonMight(getDragonMight() + increment);
 	}
 	
-	public void minusDragonStamina() {
-		dragonStamina -= 1;
-		dragonStaminaMinCap(0);
+//------------------------------------------------------------
+	
+	public int getDragonIntellect() {
+		return this.dragonIntellect;
 	}
 	
-	public void dragonStaminaMaxCap(int highCap) {
-		if (dragonStamina >= highCap) {
-			dragonStamina = highCap;
-		}
+	public void setDragonIntellect(int dragonIntellect) {
+		 this.dragonIntellect = Math.min(Math.max(dragonIntellect, DRAGON_INTELLECT_MIN), DRAGON_INTELLECT_MAX);
+			Main.getDragonScreenController().dragonGUIRefresh();
 	}
 	
-	public void dragonStaminaMinCap (int minCap) {
-		if (dragonStamina <= minCap) {
-			dragonStamina = minCap;
-		} 
+	public void incrementDragonIntellect(int increment) {
+		setDragonIntellect(getDragonIntellect() + increment);
 	}
 	
 //------------------------------------------------------------
@@ -230,63 +185,16 @@ public class Dragon {
 	}
 	
 	public void setDragonInfamy(int dragonInfamy) {
-		dragonInfamy = this.dragonInfamy;
+		 this.dragonInfamy =  Math.min(Math.max(dragonInfamy, DRAGON_INFAMY_MIN), DRAGON_INFAMY_MAX);
+			Main.getDragonScreenController().dragonGUIRefresh();
 	}
 	
-	public void addDragonInfamy() {
-		dragonInfamy += 1;
-		dragonInfamyMaxCap(20);
-	}
-	
-	public void minusDragonInfamy() {
-		dragonInfamy -= 1;
-		dragonInfamyMinCap(0);
-	}
-	
-	public void dragonInfamyMaxCap(int highCap) {
-		if (dragonInfamy >= highCap) {
-			dragonInfamy = highCap;
-		}
-	}
-	
-	public void dragonInfamyMinCap (int minCap) {
-		if (dragonInfamy <= minCap) {
-			dragonInfamy = minCap;
-		} 
+	public void incrementDragonInfamy(int increment) {
+		setDragonInfamy(getDragonInfamy() + increment);
 	}
 	
 //------------------------------------------------------------
-	
-	public int getDragonMagic() {
-		return this.dragonMagic;
-	}
-	
-	public void setDragonMagic(int dragonMagic) {
-		dragonMagic = this.dragonMagic;
-	}
-	
-	public void addDragonMagic() {
-		dragonMagic += 1;
-	}
-	
-	public void minusDragonMagic() {
-		dragonMagic -= 1;
-		dragonMagicMinCap(0);
-	}
-	
-	public void dragonMagicMaxCap(int highCap) {
-		if (dragonMagic >= highCap) {
-			dragonMagic = highCap;
-		}
-	}
-	
-	public void dragonMagicMinCap (int minCap) {
-		if (dragonMagic <= minCap) {
-			dragonMagic = minCap;
-		} 
-	}
-	
-//------------------------------------------------------------
+
 
 	
 

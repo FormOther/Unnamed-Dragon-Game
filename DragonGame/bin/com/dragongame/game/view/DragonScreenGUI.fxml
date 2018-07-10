@@ -64,8 +64,8 @@
                <children>
                   <Pane prefHeight="100.0" prefWidth="83.0">
                      <children>
-                        <Label layoutX="8.0" layoutY="14.0" prefHeight="17.0" prefWidth="46.0" text="Stamina" />
-                        <Label fx:id="dragonStaminaCounter" layoutX="23.0" layoutY="41.0" text="9">
+                        <Label alignment="CENTER" layoutX="18.0" layoutY="14.0" prefHeight="17.0" prefWidth="46.0" text="Might" />
+                        <Label fx:id="dragonMightCounter" layoutX="33.0" layoutY="45.0" text="9">
                            <font>
                               <Font size="30.0" />
                            </font>
@@ -74,8 +74,8 @@
                   </Pane>
                   <Pane prefHeight="100.0" prefWidth="83.0">
                      <children>
-                        <Label layoutX="8.0" layoutY="14.0" text="Infamy" />
-                        <Label fx:id="dragonInfamyCounter" layoutX="17.0" layoutY="41.0" text="9">
+                        <Label layoutX="20.0" layoutY="14.0" text="Intellect" />
+                        <Label fx:id="dragonIntellectCounter" layoutX="33.0" layoutY="45.0" text="9">
                            <font>
                               <Font size="30.0" />
                            </font>
@@ -84,8 +84,8 @@
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="83.0">
                      <children>
-                        <Label layoutX="-2.0" layoutY="14.0" text="Magic" />
-                        <Label fx:id="dragonMagicCounter" layoutX="6.0" layoutY="41.0" text="9">
+                        <Label layoutX="23.0" layoutY="14.0" text="Infamy" />
+                        <Label fx:id="dragonInfamyCounter" layoutX="33.0" layoutY="45.0" text="9">
                            <font>
                               <Font size="30.0" />
                            </font>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dragongame.game.view.MapEventScreenController">
+   <children>
+      <AnchorPane fx:id="eventAnchor" layoutX="269.0" layoutY="100.0" prefHeight="450.0" prefWidth="720.0">
+         <children>
+            <ImageView fitHeight="450.0" fitWidth="720.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@../../resources/images/Event%20Screen%20Blank.jpg" />
+               </image>
+            </ImageView>
+            <VBox prefHeight="450.0" prefWidth="720.0" spacing="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Pane prefHeight="43.0" prefWidth="570.0">
+                     <children>
+                        <Label fx:id="eventTitle" alignment="CENTER" layoutX="2.0" prefHeight="43.0" prefWidth="720.0" text="Event Title">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Separator prefHeight="5.0" prefWidth="570.0" />
+                  <Pane prefHeight="290.0" prefWidth="720.0">
+                     <children>
+                        <Label fx:id="eventContents" alignment="TOP_LEFT" prefHeight="340.0" prefWidth="720.0" text="Event Dialog Text" wrapText="true">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Pane>
+                  <GridPane hgap="5.0" prefHeight="100.0" prefWidth="720.0" vgap="5.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="eventButton1" mnemonicParsing="false" prefHeight="55.0" prefWidth="230.0" text="NO" />
+                        <Button fx:id="eventButton3" mnemonicParsing="false" onAction="#closeEvent" prefHeight="55.0" prefWidth="230.0" text="Button" GridPane.columnIndex="2" />
+                        <Button fx:id="eventButton2" mnemonicParsing="false" prefHeight="55.0" prefWidth="230.0" text="Button" GridPane.columnIndex="1" />
+                        <Button fx:id="eventButton4" mnemonicParsing="false" prefHeight="55.0" prefWidth="230.0" text="Button" GridPane.rowIndex="1" />
+                        <Button fx:id="eventButton5" mnemonicParsing="false" prefHeight="55.0" prefWidth="230.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button fx:id="eventButton6" mnemonicParsing="false" prefHeight="55.0" prefWidth="230.0" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </GridPane>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
