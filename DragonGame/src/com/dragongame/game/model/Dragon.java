@@ -1,6 +1,6 @@
 package com.dragongame.game.model;
 
-import com.dragongame.game.util.ValueConversion;
+import com.dragongame.game.util.StatValueConversion;
 import com.dragongame.game.view.DragonScreenController;
 import com.dragongame.game.Main;
 
@@ -38,14 +38,17 @@ public class Dragon {
 	private static final int DRAGON_HEALTH_MAX = 3;
 	
 	private int dragonMight;
+	private int dragonMightRestore;
 	private static final int DRAGON_MIGHT_MIN = 0;
 	private static final int DRAGON_MIGHT_MAX = 20;
 	
 	private int dragonIntellect;
+	private int dragonIntellectRestore;
 	private static final int DRAGON_INTELLECT_MIN = 0;
 	private static final int DRAGON_INTELLECT_MAX = 20;
 	
 	private int dragonInfamy;
+	private int dragonInfamyRestore;
 	private static final int DRAGON_INFAMY_MIN = 0;
 	private static final int DRAGON_INFAMY_MAX = 20;
 
@@ -71,9 +74,12 @@ public class Dragon {
 		this.dragonMood = 0;
 		this.dragonHealth = 3;
 		
-		this.dragonMight = 0;
-		this.dragonIntellect = 0;
+		this.dragonMight = 2;
+		this.dragonMightRestore = dragonMight;
+		this.dragonIntellect = 2;
+		this.dragonIntellectRestore = dragonIntellect;
 		this.dragonInfamy = 0;
+		this.dragonInfamyRestore = dragonInfamy;
 		
 		
 	}
@@ -163,6 +169,14 @@ public class Dragon {
 		setDragonMight(getDragonMight() + increment);
 	}
 	
+	public int getDagonMightRestoreValue() {
+		return this.dragonMightRestore;
+	}
+	
+	public void setDragonMightRestoreValue() {
+		this.dragonMightRestore = getDragonMight();
+	}
+	
 //------------------------------------------------------------
 	
 	public int getDragonIntellect() {
@@ -178,6 +192,13 @@ public class Dragon {
 		setDragonIntellect(getDragonIntellect() + increment);
 	}
 	
+	public int getDagonIntellectRestoreValue() {
+		return this.dragonIntellectRestore;
+	}
+	
+	public void setDragonIntellectRestoreValue() {
+		this.dragonIntellectRestore = getDragonIntellect();
+	}
 //------------------------------------------------------------
 	
 	public int getDragonInfamy() {
@@ -191,6 +212,14 @@ public class Dragon {
 	
 	public void incrementDragonInfamy(int increment) {
 		setDragonInfamy(getDragonInfamy() + increment);
+	}
+	
+	public int getDagonInfamyRestoreValue() {
+		return this.dragonInfamyRestore;
+	}
+	
+	public void setDragonInfamyRestoreValue() {
+		this.dragonInfamyRestore = getDragonInfamy();
 	}
 	
 //------------------------------------------------------------

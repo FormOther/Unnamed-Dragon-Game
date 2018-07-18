@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dragongame.game.view.BattleScreenController">
+   <children>
+      <AnchorPane fx:id="eventAnchor" layoutX="269.0" layoutY="78.0" prefHeight="405.0" prefWidth="720.0" AnchorPane.bottomAnchor="122.0" AnchorPane.leftAnchor="269.0" AnchorPane.rightAnchor="111.0" AnchorPane.topAnchor="122.0">
+         <children>
+            <ImageView fitHeight="406.0" fitWidth="720.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <image>
+                  <Image url="@../../resources/images/Event%20Screen%20Blank.jpg" />
+               </image>
+            </ImageView>
+            <VBox prefHeight="406.0" prefWidth="720.0" spacing="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Pane prefHeight="47.0" prefWidth="720.0">
+                     <children>
+                        <Label fx:id="battleTitle" alignment="CENTER" layoutX="2.0" prefHeight="43.0" prefWidth="720.0" text="Event Title">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Separator maxWidth="720.0" prefHeight="5.0" prefWidth="720.0" />
+                  <Pane prefHeight="119.0" prefWidth="710.0">
+                     <children>
+                        <Label fx:id="battleText" alignment="TOP_LEFT" layoutY="2.0" prefHeight="119.0" prefWidth="710.0" text="Descriptive content" wrapText="true">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin>
+                  </Pane>
+                  <Separator maxWidth="720.0" prefWidth="720.0" />
+                  <HBox prefHeight="95.0" prefWidth="710.0" spacing="10.0">
+                     <children>
+                        <Pane prefHeight="95.0" prefWidth="156.0">
+                           <children>
+                              <Label fx:id="battleStatName" alignment="CENTER" layoutY="-1.0" prefHeight="30.0" prefWidth="156.0" text="Stat">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="battleStatValue" alignment="CENTER" layoutY="29.0" prefHeight="70.0" prefWidth="156.0" text="0">
+                                 <font>
+                                    <Font name="System Bold" size="40.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="95.0" prefWidth="195.0">
+                           <children>
+                              <HBox layoutY="30.0" prefHeight="64.0" prefWidth="195.0" spacing="5.0">
+                                 <children>
+                                    <Button fx:id="decreaseSuccessChance" mnemonicParsing="false" onAction="#takeFromChances" prefHeight="95.0" prefWidth="60.0" text="&lt;" />
+                                    <Label fx:id="battleStatApplyValue" alignment="CENTER" prefHeight="95.0" prefWidth="65.0" text="0%">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="increaseSuccessChance" mnemonicParsing="false" onAction="#addToChances" prefHeight="95.0" prefWidth="60.0" text="&gt;" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="battleStatApplyName" alignment="CENTER" layoutX="-2.0" layoutY="-3.0" prefHeight="30.0" prefWidth="195.0" text="Apply [Stat]">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></Label>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="95.0" prefWidth="335.0">
+                           <children>
+                              <Label prefHeight="50.0" prefWidth="160.0" text="Chance to succeed:">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutY="49.0" prefHeight="50.0" prefWidth="140.0" text="Chance of injury:">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="battleSuccessChance" layoutX="160.0" prefHeight="50.0" prefWidth="170.0" text="Almost Impossible">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="battleHarmChance" layoutX="140.0" layoutY="54.0" prefHeight="41.0" prefWidth="170.0" text="Almost Impossible">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Separator maxWidth="720.0" prefHeight="5.0" prefWidth="720.0" />
+                  <VBox maxWidth="720.0" prefHeight="104.0" prefWidth="720.0" spacing="10.0">
+                     <children>
+                        <Button fx:id="Engage" mnemonicParsing="false" onAction="#rollToWin" prefHeight="52.0" prefWidth="720.0" text="Button" />
+                        <Button fx:id="Flee" mnemonicParsing="false" onAction="#closeBattleScreen" prefHeight="52.0" prefWidth="720.0" text="Button" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </AnchorPane>
+   </children>
+</AnchorPane>
