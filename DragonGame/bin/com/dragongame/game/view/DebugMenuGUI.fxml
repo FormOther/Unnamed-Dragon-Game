@@ -225,6 +225,32 @@
                   </VBox>
                </children>
             </Pane>
+            <Pane prefHeight="60.0" prefWidth="170.0">
+               <children>
+                  <VBox prefHeight="70.0" prefWidth="170.0">
+                     <children>
+                        <Separator prefWidth="200.0" />
+                        <Label text="World Year" />
+                        <GridPane hgap="5.0" vgap="5.0">
+                           <children>
+                              <Button fx:id="worldYearButton1" mnemonicParsing="false" onAction="#minusWorldYear" prefHeight="30.0" prefWidth="100.0" text="-1" />
+                              <Button fx:id="worldYearButton2" mnemonicParsing="false" onAction="#addWorldYear" prefHeight="30.0" prefWidth="100.0" text="+1" GridPane.columnIndex="1" />
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
          </children>
       </VBox>
    </children>

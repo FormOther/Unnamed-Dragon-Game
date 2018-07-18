@@ -4,11 +4,13 @@ package com.dragongame.game.view;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import com.dragongame.game.Main;
 import com.dragongame.game.model.Bank;
 import com.dragongame.game.model.Dragon;
-import com.dragongame.game.util.ValueConversion;
+import com.dragongame.game.util.StatValueConversion;
+
 
 public class DragonScreenController {
 	@FXML
@@ -38,7 +40,9 @@ public class DragonScreenController {
 	@FXML
 	private Label dragonGoldCounter;
 	
-	ValueConversion value = new ValueConversion();
+	@FXML Button restButton;
+	
+	StatValueConversion value = new StatValueConversion();
 	private static Bank bank;
 	private static Dragon dragon;
 	
@@ -115,7 +119,11 @@ public class DragonScreenController {
 		
 	}
 	
-
+	public void restMechanic() {
+		GameMapController.getDateTracker().incrementCurrentYear(1);
+		DragonScreenController.getDragon().setDragonMight(dragon.getDagonMightRestoreValue());
+		DragonScreenController.getDragon().setDragonIntellect(dragon.getDagonIntellectRestoreValue());
+	}
 
 	/**
 	 * Is called by the main application to give a reference back to itself.

@@ -46,6 +46,10 @@ public class DebugMenuController {
 	private Button dragonGoldButton1;
 	@FXML
 	private Button dragonGoldButton2;
+	@FXML
+	private Button worldYearButton1;
+	@FXML
+	private Button worldYearButton2;
 	
 	private Main main;
 	
@@ -136,6 +140,16 @@ public class DebugMenuController {
 	@FXML
 	private void minusDragonGold() {
 		DragonScreenController.getBank().incrementDragonGold(-1000);
+	}
+	
+	@FXML
+	private void addWorldYear() {
+		GameMapController.getDateTracker().incrementCurrentYear(1);
+	}
+	
+	@FXML
+	private void minusWorldYear() {
+		GameMapController.getDateTracker().incrementCurrentYear(-1);
 	}
 	
 	public void setMain (Main main) {

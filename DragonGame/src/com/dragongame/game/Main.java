@@ -4,10 +4,11 @@ import java.io.IOException;
 
 import com.dragongame.game.model.Bank;
 import com.dragongame.game.model.Dragon;
+import com.dragongame.game.view.BattleScreenController;
 import com.dragongame.game.view.DebugMenuController;
 import com.dragongame.game.view.DragonScreenController;
+import com.dragongame.game.view.GameMapController;
 import com.dragongame.game.view.MapEventScreenController;
-import com.dragongame.game.view.TutorialMapController;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -20,34 +21,44 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-	/*
-	 *You made the event screen! Good job buddy. Now to fill it with events! It's time to start looking into how to import text 
-	 *so that you can have 
-	 * a separate file with all the event text to port into the events screen. Keep up the good work! You've almost got the MVP
-	 * down. Once it's done, then you can look into adding the extra features like the Cypher System and the other screens
-	 * like the dragon description screen! 
+	/*So I've added the battles to the events! Now when the player chooses to attack in any event they will open the battle menu! Back pats all around.
 	 * 
-	 * One thing at a time and you've got yourself a damn solid game! 
+	 * What remains in the battle GUI is:
+	 * ~Fluff text and title for the battles (Make new classes)
+	 * ~Damage chance to the dragon on failure (Check if Victory == true [On the update one not the initialize] and trigger event if false)
+	 * ~Victory Screen (add gold) [Automatically switched to victory screen from battle screen when victory == true]
+	 * ~Loss (GAME OVER) screen.
+	 * 
+	 * The next task on the list should be the damage thing. It's about time we start introducing some risk into this game. So implement the chance of damage to the dragon 
+	 * upon not successfully attacking. For long term implementation [Dragon Perks/Modifications/Body Additions] make a stat called Dragon defense or something in the 
+	 * Dragon class. Default defense rank is 0. When dragon defense is raised (by defensive perks like scales, size, etc.) it decreases the chance that you will be injured. 
+	 * So like a reverse cypher system that runs automatically after trying to kill something, but only triggers on failure. If the the attack is successful, there will
+	 * be no roll for damage.
+	 * 
+	 * As for what else needs to be done...not much for the end MVP. 
+	 * Though some things I may want to add once that is finished include: 
+	 * 
+	 * Opening Cutscene/story intro.
+	 * Planning of the Lair and Loot Screens
+	 * Randomizing towns to torment
+	 * Randomizing of loot
+	 * 
+	 * Good thing you set such a long deadline on the game! It's coming along slowly but surely, each system tying well into the one previous. Keep up the good work.
 	 * 
 	 *  So now what is needed to make the game move forward:
 	 * 
 	 *   ~~~~~Minimum Viable Product~~~~~
 	 *    Overall map[DONE]
 	 *    Map buttons[DONE]
-	 *    Map Events. [IN PROGRESS]
-	 *    Rest Mechanic to reset stats [NEXT ON DOCKET]
-	 *    
-	 *    
-	 *    ~~~~~Extended Content~~~~~
-	 *    Date tracking for years asleep
-	 *    Implementing the Cypher System into contested events
-	 *    
-	 *    
+	 *    Map Events. [DONE]
+	 *    Rest Mechanic to reset stats [DONE]
+	 *    Date tracking for years asleep [DONE]
+	 *    Implementing the Cypher System into contested events [NEAR COMPLETION]
 	 *    
 	 *At the end of the day, the basic game should allow you to, click on a region and have a random event pop up. Complete the 
 	 *random event and have the values in your GUI reflect the outcome. That's it! 
 	 *    
-	 *  Keep up the good work man! You got this! 
+	 *  Cypher System is almost done. Keep it up!  
 	 *  
 	 *  -Guy
 	*/
@@ -56,9 +67,13 @@ public class Main extends Application {
 	private Stage debugWindow;
 	private AnchorPane rootLayout;
 	private static DragonScreenController dragonScreenController;
+	private static GameMapController gameMapController;
+	private static MapEventScreenController mapEventController;
+	private static BattleScreenController battleScreenController;
 	
 	
-	private AnchorPane mapEvents;
+	private static AnchorPane mapEvents;
+	private static AnchorPane battleScreen;
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -71,6 +86,8 @@ public class Main extends Application {
 		//showDebugMenu(); 
 		showEventMenu();
 		eventMenuVisibility(false);
+		showBattleScreen();
+		battleScreenVisibility(false);
 		
 	}
 	
@@ -132,7 +149,7 @@ public class Main extends Application {
 		try {
 			//Load Dragon Map
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("view/GameTutorialMap.fxml"));
+			loader.setLocation(Main.class.getResource("view/GameMapGUI.fxml"));
 			AnchorPane tutorialMap = (AnchorPane) loader.load();
 			
 			// Set tutorial map into the right side of the root layout
@@ -142,12 +159,16 @@ public class Main extends Application {
 			rootLayout.setRightAnchor(tutorialMap, (double) 0);
 			
 			// Need to give controller access to the Main
-			TutorialMapController controller = loader.getController();
-			controller.setMain(this);
+			gameMapController = loader.getController();
+			gameMapController.setMain(this);
 			
 		} catch (IOException e) {
             e.printStackTrace();
         }
+	}
+	
+	public static GameMapController getGameMapController() {
+		return gameMapController;
 	}
 	
 	/**
@@ -182,26 +203,59 @@ public class Main extends Application {
 			loader.setLocation(Main.class.getResource("view/MapEventScreen.fxml"));
 			mapEvents = (AnchorPane) loader.load();
 			
-			//Set debug menu into the top of the root layout
+			//Set Event menu into the root layout
 			rootLayout.getChildren().add(mapEvents);
 			rootLayout.setBottomAnchor(mapEvents, (double) 0);
 			rootLayout.setTopAnchor(mapEvents, (double) 0);
 			rootLayout.setRightAnchor(mapEvents, (double) 0);
 			
-			MapEventScreenController mapEventController = loader.getController();
+			mapEventController = loader.getController();
 			mapEventController.setMain(this);
 			
 			} catch (IOException e) {
 	            e.printStackTrace();
 	        }
-	}
-	
-	public void eventMenuVisibility(boolean value) {
-		mapEvents.setVisible(value);
 		
+		}
+	
+
+	public static MapEventScreenController getMapEventScreenController() {
+	return mapEventController;
 	}
 
+	public static void eventMenuVisibility(boolean value) {
+		mapEvents.setVisible(value);
+	}
+
+	public void showBattleScreen() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("view/BattleScreenGUI.fxml"));
+			battleScreen = (AnchorPane) loader.load();
+			
+			rootLayout.getChildren().add(battleScreen);
+			rootLayout.setBottomAnchor(battleScreen, (double) 0);
+			rootLayout.setTopAnchor(battleScreen, (double) 0);
+			rootLayout.setRightAnchor(battleScreen, (double) 0);
+			
+			battleScreenController = loader.getController();
+			battleScreenController.setMain(this);
+			
+		} catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
 	
+	public static BattleScreenController getBattleScreenController() {
+		return battleScreenController;
+	}
+	
+	public static void battleScreenVisibility(boolean value) {
+		getBattleScreenController().getBattle().setAppliedStatValue(0);
+		getBattleScreenController().updateBattleScreen();
+		getBattleScreenController().getBattle().setVictoryBoolean(false);
+		battleScreen.setVisible(value);
+	}
 	
 	/**
 	 * Returns the main stage
