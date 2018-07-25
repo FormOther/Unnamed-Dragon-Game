@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dragongame.game.view.GameMapController">
+   <children>
+      <ImageView fx:id="theMap" fitHeight="650.0" fitWidth="850.0" layoutX="322.0" layoutY="122.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../resources/images/Map%20Base.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="seaButton" layoutX="116.0" layoutY="152.0" mnemonicParsing="false" onAction="#clickSea" onMouseEntered="#mouseOverSea" onMouseExited="#defaultMap" opacity="0.0" prefHeight="148.0" prefWidth="460.0" text="Sea Button" />
+      <Button fx:id="cityButton" layoutX="46.0" layoutY="340.0" mnemonicParsing="false" onAction="#clickCity" onMouseEntered="#mouseOverCity" onMouseExited="#defaultMap" opacity="0.0" prefHeight="141.0" prefWidth="234.0" text="Big City Button" />
+      <Button fx:id="portButton" layoutX="433.0" layoutY="325.0" mnemonicParsing="false" onAction="#clickPort" onMouseEntered="#mouseOverPort" onMouseExited="#defaultMap" opacity="0.0" prefHeight="74.0" prefWidth="108.0" text="Port Button" />
+      <Button fx:id="ruralButton" layoutX="397.0" layoutY="518.0" mnemonicParsing="false" onAction="#clickRural" onMouseEntered="#mouseOverRural" onMouseExited="#defaultMap" opacity="0.0" prefHeight="59.0" prefWidth="151.0" text="Rural Area Button" />
+      <Button fx:id="forestButton" layoutX="591.0" layoutY="437.0" mnemonicParsing="false" onAction="#clickForest" onMouseEntered="#mouseOverForest" onMouseExited="#defaultMap" opacity="0.0" prefHeight="213.0" prefWidth="258.0" text="Forest Button" />
+      <Button fx:id="roadButton" layoutX="329.0" layoutY="410.0" mnemonicParsing="false" onAction="#clickRoad" onMouseEntered="#mouseOverRoad" onMouseExited="#defaultMap" opacity="0.0" prefHeight="108.0" prefWidth="252.0" text="Trade Routes Button" />
+      <Button fx:id="mountainButton" layoutX="7.0" layoutY="528.0" mnemonicParsing="false" onAction="#clickMountain" onMouseEntered="#mouseOverMountain" onMouseExited="#defaultMap" opacity="0.0" prefHeight="116.0" prefWidth="234.0" text="Mountains Button" />
+      <Button fx:id="skyButton" mnemonicParsing="false" onAction="#clickSky" onMouseEntered="#mouseOverSky" onMouseExited="#defaultMap" opacity="0.0" prefHeight="141.0" prefWidth="850.0" text="Sky Button" />
+      <Button fx:id="badlandButton" layoutX="612.0" layoutY="139.0" mnemonicParsing="false" onMouseEntered="#mouseOverBadland" onMouseExited="#defaultMap" opacity="0.0" prefHeight="256.0" prefWidth="234.0" text="Badlands Button" />
+      <Pane layoutX="7.0" prefHeight="43.0" prefWidth="151.0" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="dateLabel" prefHeight="43.0" prefWidth="151.0" text="Date Label">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
