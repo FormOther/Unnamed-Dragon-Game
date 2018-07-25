@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dragongame.game.view.GameOverScreenController">
+   <children>
+      <ImageView fitHeight="650.0" fitWidth="1114.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-7.0">
+         <image>
+            <Image url="@../../resources/images/Obidia%20Eyes.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="300.0" layoutY="275.0" prefHeight="100.0" prefWidth="500.0">
+         <children>
+            <Label fx:id="gameOverText" alignment="CENTER" prefHeight="48.0" prefWidth="500.0" text="Label" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Button fx:id="newGameButton" layoutX="172.0" layoutY="54.0" mnemonicParsing="false" onAction="#startNewGame" prefHeight="32.0" prefWidth="157.0" text="Button" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
